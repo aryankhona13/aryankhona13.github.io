@@ -11,6 +11,7 @@
             --dark: #2d3436;
             --light: #f4f7f6;
             --accent: #00b894;
+            --warning: #fdcb6e;
             --danger: #d63031;
         }
         body { 
@@ -19,6 +20,7 @@
             background: var(--light); 
             color: var(--dark); 
             line-height: 1.6;
+            scroll-behavior: smooth; 
         }
         .header { 
             background: linear-gradient(135deg, var(--primary), var(--secondary)); 
@@ -33,7 +35,7 @@
         .header p { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; font-weight: 300;}
         
         .container { 
-            max-width: 900px; 
+            max-width: 950px; 
             margin: -30px auto 40px; 
             background: white; 
             padding: 40px; 
@@ -41,8 +43,8 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.08); 
         }
         
-        h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px;}
-        h3 { color: var(--dark); margin-bottom: 5px;}
+        h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 50px; font-size: 1.8rem;}
+        h3 { color: var(--dark); margin-bottom: 5px; margin-top: 0;}
         
         .hero-download {
             text-align: center;
@@ -52,23 +54,28 @@
             border: 2px dashed var(--accent);
             margin-bottom: 30px;
         }
+        
         .btn { 
             display: inline-block; background: var(--accent); color: white; 
-            padding: 16px 35px; text-decoration: none; border-radius: 50px; 
-            font-weight: bold; font-size: 1.2rem; transition: 0.3s; 
-            box-shadow: 0 8px 15px rgba(0,184,148,0.3); margin: 15px 0;
+            padding: 14px 28px; text-decoration: none; border-radius: 50px; 
+            font-weight: bold; font-size: 1.1rem; transition: 0.3s; 
+            box-shadow: 0 8px 15px rgba(0,184,148,0.3); margin: 10px;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 20px rgba(0,184,148,0.4); }
-        
+        .btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); box-shadow: none; }
+        .btn-outline:hover { background: var(--primary); color: white; box-shadow: 0 8px 15px rgba(78,84,200,0.3); }
+        .btn-media { background: #e17055; box-shadow: 0 8px 15px rgba(225,112,85,0.3); border: none; cursor: pointer; }
+        .btn-media:hover { box-shadow: 0 12px 20px rgba(225,112,85,0.4); }
+
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
         .card {
             background: #fff;
-            padding: 20px;
+            padding: 25px;
             border-radius: 12px;
             border-left: 5px solid var(--primary);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -94,10 +101,54 @@
             margin-top: 30px;
             font-size: 0.95rem;
         }
+
+        .action-bar {
+            background: #f1f2f6;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* UPDATED GALLERY SECTION STYLES */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .media-item {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .media-item:hover {
+            transform: scale(1.02);
+        }
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .video-container {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
         
         .footer {
-            text-align: center; padding: 30px; color: #636e72; font-size: 0.9rem;
+            text-align: center; padding: 30px; color: #636e72; font-size: 0.95rem;
+            background: #dfe6e9; margin-top: 40px;
         }
+        .footer a { color: var(--primary); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -115,25 +166,41 @@
         <a href="WiControl.apk" class="btn" download>📥 DOWNLOAD WICONTROL APK</a>
     </div>
 
-    <h2>⚙️ System Architecture & Hardware Specs</h2>
+    <h2>💡 Real-World Applications</h2>
+    <div class="card-grid">
+        <div class="card" style="border-left-color: #00b894;">
+            <h3>🏠 Smart Home Automation</h3>
+            <p>Control lights, fans, and appliances wirelessly. The universal relay design supports both <strong>High-Voltage AC</strong> (Fans, Bulbs) and <strong>DC Loads</strong> (Motors, Pumps).</p>
+        </div>
+        <div class="card" style="border-left-color: #e84393;">
+            <h3>✨ Ambient & Mood Lighting</h3>
+            <p>Use the advanced NeoPixel engine for gaming setups, home theaters, or festive decorations with 65,000 HSV color precision.</p>
+        </div>
+        <div class="card" style="border-left-color: #0984e3;">
+            <h3>🏭 Industrial Sequential Timers</h3>
+            <p>Use Chaser, Cyclic, or Sequence modes to automate repetitive manufacturing tasks, irrigation systems, or display signage.</p>
+        </div>
+    </div>
+
+    <h2>⚙️ Technical Specifications & Logic Flow</h2>
     <div class="architecture-box">
-        <p>This project utilizes a high-performance, dual-microcontroller architecture to ensure no network bottlenecks occur during complex hardware operations.</p>
+        <p>This project utilizes a high-performance, <strong>Dual-Microcontroller Architecture</strong> to prevent network bottlenecks during complex operations:</p>
         <div class="card-grid">
-            <div class="card" style="border-left-color: #0984e3;">
-                <h3>🧠 ESP8266 (Gateway)</h3>
-                <p>Hosts a local Web-Server in AP/STA mode. Receives HTTP commands and transmits serial data to the main processor.</p>
+            <div class="card" style="border-left-color: #0984e3; padding: 15px;">
+                <h3>🧠 ESP8266 (Wi-Fi Gateway)</h3>
+                <p>Hosts a robust local Web-Server. It receives HTTP REST commands from the Android App and relays them as clean Serial Strings to the main processor.</p>
             </div>
-            <div class="card" style="border-left-color: #d63031;">
-                <h3>⚡ Arduino Nano (Core)</h3>
-                <p>The main workhorse. Executes Non-Blocking logic for precision relay timing and Trigonometric NeoPixel Math.</p>
+            <div class="card" style="border-left-color: #d63031; padding: 15px;">
+                <h3>⚡ Arduino Nano (Core Processor)</h3>
+                <p>The main workhorse. Uses a custom 'Smart Number Extractor' algorithm to parse incoming serial commands. It executes Non-Blocking millis() logic for precision relay timing.</p>
             </div>
-            <div class="card" style="border-left-color: #00b894;">
-                <h3>🔌 Relays & Indicators</h3>
-                <p>3-Channel active-HIGH BC547 controlled relays for AC appliances, backed by physical LED status indicators.</p>
+            <div class="card" style="border-left-color: #00b894; padding: 15px;">
+                <h3>🔌 Universal Relays (AC/DC)</h3>
+                <p>3-Channel active-HIGH BC547 controlled relays. Acts as an isolated dry-contact switch, safely controlling both 220V AC and 12V/24V DC loads.</p>
             </div>
-            <div class="card" style="border-left-color: #a29bfe;">
-                <h3>🌈 WS2812B NeoPixel</h3>
-                <p>An 8-LED intelligent ring displaying 9 unique mathematical sub-pixel animations and system statuses.</p>
+            <div class="card" style="border-left-color: #a29bfe; padding: 15px;">
+                <h3>🌈 WS2812B NeoPixel Engine</h3>
+                <p>An 8-LED ring driven by Trigonometric Math (Sine/Cosine waves). Utilizes a 16-bit Hue spectrum (65,535 steps) for ultra-smooth, liquid-like color morphing.</p>
             </div>
         </div>
     </div>
@@ -152,47 +219,45 @@
         </div>
         <div class="card" style="border-left-color: #fdcb6e;">
             <h3>🏠 Station (STA) Mode</h3>
-            <p>Use this to integrate the hardware into your existing home network.</p>
+            <p>Integrate the hardware into your existing home network.</p>
             <ol>
                 <li>Update the ESP8266 code with your Home Wi-Fi SSID & Password.</li>
                 <li>Connect your phone to your Home Wi-Fi.</li>
-                <li>Enter the ESP's allocated IP address in the WiControl App settings.</li>
+                <li>Enter the ESP's IP address in the WiControl App settings.</li>
             </ol>
         </div>
     </div>
 
     <h2>📱 Application Features & Modes</h2>
-    <p>The WiControl app provides a modular interface to control physical appliances with millisecond precision:</p>
-    
     <div class="card-grid">
         <div class="card">
             <h3>🎛️ Manual Dashboard</h3>
-            <p>Instant ON/OFF control for individual relays (R1, R2, R3) and an emergency "ALL ON/ALL OFF" master override switch.</p>
+            <p>Instant ON/OFF control for individual relays and an emergency "ALL ON/OFF" master override switch.</p>
         </div>
         <div class="card">
             <h3>🏃 Dynamic Chaser</h3>
-            <p>Creates running light effects. Choose from 4 sequences (Forward, Reverse, Ping-Pong, Alternate) and define exact millisecond speeds.</p>
+            <p>Creates running light effects. Choose sequences (Forward, Reverse, Ping-Pong) and define exact millisecond speeds.</p>
         </div>
         <div class="card">
             <h3>⏱️ Smart Timer</h3>
-            <p>Set a countdown duration (1 Min, 5 Min, 10 Min, 30 Min, 1 Hour). The selected relay will activate and auto-shutoff when the time expires.</p>
+            <p>Set a countdown duration. The selected relay will activate and auto-shutoff when the time expires.</p>
         </div>
         <div class="card">
             <h3>🔄 Infinite Cyclic Mode</h3>
-            <p>Define independent "ON Time" and "OFF Time" parameters. The appliance will continuously loop between states automatically.</p>
+            <p>Define independent "ON Time" and "OFF Time" parameters. The appliance will loop between states automatically.</p>
         </div>
         <div class="card">
             <h3>🚥 Custom Sequence</h3>
-            <p>Program a 3-step timeline. Set custom active delays for Relay 1, 2, and 3. They will trigger sequentially based on your input.</p>
+            <p>Program a 3-step timeline. Set custom active delays for Relay 1, 2, and 3 to trigger sequentially.</p>
         </div>
         <div class="card">
             <h3>🎉 Party Interlock</h3>
-            <p>A fast-paced algorithm that triggers random states across all 3 relays to create a disco-strobe lighting effect.</p>
+            <p>A fast-paced algorithm triggering random states across all 3 relays for a disco-strobe effect.</p>
         </div>
     </div>
 
     <h2>🌈 The Ultra-Pro NeoPixel Engine</h2>
-    <p>The system features a highly advanced, non-blocking NeoPixel engine. Every effect utilizes the full 65,000 HSV color spectrum.</p>
+    <p>A proprietary Non-Blocking LED engine. Instead of standard 8-bit RGB, every effect utilizes the full 65,000 HSV color spectrum for flawless transitions.</p>
     
     <div class="architecture-box">
         <ul>
@@ -210,14 +275,58 @@
     </div>
 
     <div class="safety-box">
-        <strong>⚠️ Technical Safety Note:</strong> The relays interface with high-voltage AC current. All hardware wiring has been physically isolated. Do not modify the relay terminals while the system is connected to mains power.
+        <strong>⚠️ Technical Safety Note:</strong> The relays act as isolated switches capable of handling High-Voltage AC current. Do not modify the relay terminals while the system is connected to mains power.
+    </div>
+
+    <div class="action-bar">
+        <h2>🛠️ Project Resources</h2>
+        <p>Explore the source code or watch the project in action.</p>
+        <br>
+        <a href="Nano_Code.ino" class="btn btn-outline" download>💻 Arduino Nano Code</a>
+        <a href="ESP8266_Code.ino" class="btn btn-outline" download>📡 ESP8266 Code</a>
+        <br><br>
+        <a href="#gallery" class="btn btn-media">📸 View Photos & Videos</a>
+    </div>
+
+    <h2 id="gallery" style="margin-top: 60px;">📸 Project Gallery & Live Demo</h2>
+    <p>See the WiControl hardware and NeoPixel engine in real-world operation.</p>
+    
+    <div class="media-grid">
+        <div class="media-item">
+            <img src="photo1.jpg" alt="WiControl Setup 1">
+        </div>
+        <div class="media-item">
+            <img src="photo2.jpg" alt="WiControl Setup 2">
+        </div>
+        <div class="media-item">
+            <img src="photo3.jpg" alt="WiControl Detail 1">
+        </div>
+        <div class="media-item">
+            <img src="photo4.jpg" alt="WiControl Detail 2">
+        </div>
+    </div>
+
+    <div class="media-grid" style="margin-top: 30px;">
+        <div class="video-container">
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video playback.
+            </video>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+                Your browser does not support the video playback.
+            </video>
+        </div>
     </div>
 
 </div>
 
 <div class="footer">
     <strong>Developed by: Aryan Khona</strong><br>
-    Electronics & Communication Engineering | GTU Mid-Sem Project 2026
+    Electronics & Communication Engineering | GTU Sem 4 Project 2026<br>
+    📧 Contact: <a href="mailto:aryankhona@gmail.com">aryankhona@gmail.com</a>
 </div>
 
 </body>
